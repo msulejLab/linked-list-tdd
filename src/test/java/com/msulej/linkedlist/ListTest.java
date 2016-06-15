@@ -1,5 +1,6 @@
 package com.msulej.linkedlist;
 
+import org.hamcrest.Matcher;
 import org.junit.Test;
 
 import static com.msulej.linkedlist.ListBuilder.*;
@@ -43,6 +44,10 @@ public class ListTest {
 
         assertThat(emptyList, hasSizeOf(0));
         assertThat(filledList, hasSizeOf(3));
+    }
+
+    private Matcher<List> hasSizeOf(int expectedSize) {
+        return new ListSizeMatcher(expectedSize);
     }
 
     private List a(ListBuilder builder) {

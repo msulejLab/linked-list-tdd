@@ -16,4 +16,9 @@ public class ListBuilder {
     public static ListBuilder list() {
         return new ListBuilder();
     }
+
+    public ListBuilder withValues(String ... values) {
+        this.values = values;
+        return this;
+    }
 }
