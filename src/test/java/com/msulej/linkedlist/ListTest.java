@@ -75,7 +75,7 @@ public class ListTest {
 
     @Test
     public void shouldDeleteFirstNodeFromList() {
-        List theList = a(list().withValues("fred, wilma"));
+        List theList = a(list().withValues("fred", "wilma"));
 
         Node deletedNode = theList.delete("fred");
 

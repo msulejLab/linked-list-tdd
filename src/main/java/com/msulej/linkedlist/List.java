@@ -74,22 +74,32 @@ public class List {
         return values;
     }
 
-    public void delete(String value) {
+    public Node delete(String value) {
         Node node = start;
         Node nextNode = null;
 
+        if (start != null) {
+            if (start.value().equals(value)) {
+                Node oldStart = start;
+                start = oldStart.next();
+                return oldStart;
+            }
+        }
+
         while (node != null) {
             if (!node.hasNext()) {
-                return;
+                return null;
             }
 
             nextNode = node.next();
             if (nextNode.value().equals(value)) {
                 node.next(nextNode.next());
+                return nextNode;
             }
 
             node = nextNode;
         }
+        return node;
     }
 
     private void addValuesToList(String[] initValues) {
