@@ -119,4 +119,20 @@ public class List {
     private boolean hasStartNode() {
         return start != null;
     }
+
+    public Node get(int index) {
+        Node node = start;
+
+        int currentIndex = 0;
+        while (node != null) {
+            if (currentIndex == index) {
+                return node;
+            }
+
+            node = node.next();
+            currentIndex += 1;
+        }
+
+        return null;
+    }
 }
