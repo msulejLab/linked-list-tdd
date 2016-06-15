@@ -83,6 +83,21 @@ public class ListTest {
         assertThat(deletedNode.value(), equalTo("fred"));
     }
 
+    @Test
+    public void shouldReturnNodeForSpecificPosition() {
+        List theList = a(list().withValues("fred", "wilma", "betty", "barney", "dino"));
+
+        Node firstNode = theList.get(0);
+        assertThat(firstNode.value(), equalTo("fred"));
+
+        Node middleNode = theList.get(2);
+        assertThat(middleNode.value(), equalTo("betty"));
+
+        Node lastNode = theList.get(4);
+        assertThat(lastNode.value(), equalTo("dino"));
+    }
+
+
     private List a(ListBuilder builder) {
         return builder.build();
     }
