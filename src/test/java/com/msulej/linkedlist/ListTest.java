@@ -1,6 +1,5 @@
 package com.msulej.linkedlist;
 
-import org.hamcrest.collection.IsArrayContainingInOrder;
 import org.junit.Test;
 
 import static com.msulej.linkedlist.ListBuilder.*;
@@ -41,7 +40,7 @@ public class ListTest {
     @Test
     public void shouldReturnCorrectSize() {
         List emptyList = a(list().withoutAnyValues());
-        List filledList = a(list().withValues("fred", "wilma"));
+        List filledList = a(list().withValues("fred", "wilma", "betty"));
 
         assertThat(emptyList, ListSizeMatcher.hasSizeOf(0));
         assertThat(filledList, ListSizeMatcher.hasSizeOf(3));

@@ -47,13 +47,30 @@ public class List {
 
         if (node != null) {
             size = 1;
+        } else {
+            return size;
         }
 
-        while (node != null) {
+        while (node.next() != null) {
             node = node.next();
             size += 1;
         }
 
         return size;
+    }
+
+    public String[] values() {
+        String[] values = new String[size()];
+
+        Node node = start;
+
+        int index = 0;
+        while (node != null) {
+            values[index] = node.value();
+            node = node.next();
+            index += 1;
+        }
+
+        return values;
     }
 }

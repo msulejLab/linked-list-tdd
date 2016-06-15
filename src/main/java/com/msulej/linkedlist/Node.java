@@ -20,4 +20,8 @@ public class Node {
     public Node next() {
         return next;
     }
+
+    public boolean hasNext() {
+        return next != null;
+    }
 }
