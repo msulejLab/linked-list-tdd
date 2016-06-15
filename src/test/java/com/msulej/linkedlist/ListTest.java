@@ -1,5 +1,6 @@
 package com.msulej.linkedlist;
 
+import org.hamcrest.collection.IsArrayContainingInOrder;
 import org.junit.Test;
 
 import static com.msulej.linkedlist.ListBuilder.*;
@@ -7,6 +8,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsArrayContainingInOrder.arrayContaining;
 
 
 public class ListTest {
@@ -43,6 +45,18 @@ public class ListTest {
 
         assertThat(emptyList, ListSizeMatcher.hasSizeOf(0));
         assertThat(filledList, ListSizeMatcher.hasSizeOf(3));
+    }
+
+    @Test
+    public void shouldReturnArrayOfValues() {
+        List theList = a(list().withoutAnyValues());
+
+        theList.add("fred");
+        theList.add("wilma");
+        theList.add("betty");
+        theList.add("barney");
+
+        assertThat(theList.values(), arrayContaining("fred", "wilma", "betty", "barney"));
     }
 
     private List a(ListBuilder builder) {
