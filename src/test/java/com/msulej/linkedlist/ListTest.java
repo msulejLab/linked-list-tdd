@@ -4,6 +4,7 @@ import org.hamcrest.core.IsNot;
 import org.junit.Test;
 
 import static com.msulej.linkedlist.ListBuilder.*;
+import static com.msulej.linkedlist.ListSizeMatcher.hasSizeOf;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -44,8 +45,8 @@ public class ListTest {
         List emptyList = a(list().withoutAnyValues());
         List filledList = a(list().withValues("fred", "wilma", "betty"));
 
-        assertThat(emptyList, ListSizeMatcher.hasSizeOf(0));
-        assertThat(filledList, ListSizeMatcher.hasSizeOf(3));
+        assertThat(emptyList, hasSizeOf(0));
+        assertThat(filledList, hasSizeOf(3));
     }
 
     @Test
@@ -70,6 +71,16 @@ public class ListTest {
         theList.delete(theNode.value());
 
         assertThat(theList.find("wilma"), is(nullValue()));
+    }
+
+    @Test
+    public void shouldDeleteFirstNodeFromList() {
+        List theList = a(list().withValues("fred, wilma"));
+
+        Node deletedNode = theList.delete("fred");
+
+        assertThat(theList, hasSizeOf(1));
+        assertThat(deletedNode.value(), equalTo("fred"));
     }
 
     private List a(ListBuilder builder) {
