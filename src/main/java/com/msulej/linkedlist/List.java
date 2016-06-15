@@ -10,7 +10,17 @@ public class List {
     }
 
     public Node find(String value) {
-        return start;
+        Node node = start;
+
+        while (node != null) {
+            if (node.value().equals(value)) {
+                return node;
+            }
+
+            node = node.next();
+        }
+
+        return null;
     }
 
     public void add(String value) {
@@ -51,7 +61,7 @@ public class List {
             return size;
         }
 
-        while (node != null) {
+        while (node.hasNext()) {
             size += 1;
             node = node.next();
         }
@@ -72,5 +82,23 @@ public class List {
         }
 
         return values;
+    }
+
+    public void delete(String value) {
+        Node node = start;
+        Node nextNode = null;
+
+        while (node != null) {
+            if (!node.hasNext()) {
+                return;
+            }
+
+            nextNode = node.next();
+            if (nextNode.value().equals(value)) {
+                node.next(nextNode.next());
+            }
+
+            node = nextNode;
+        }
     }
 }
