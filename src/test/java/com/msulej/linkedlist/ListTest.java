@@ -36,6 +36,15 @@ public class ListTest {
         assertThat("fred", equalTo(listNode.value()));
     }
 
+    @Test
+    public void shouldReturnCorrectSize() {
+        List emptyList = a(list().withoutAnyValues());
+        List filledList = a(list().withValues("fred", "wilma"));
+
+        assertThat(emptyList, hasSizeOf(0));
+        assertThat(filledList, hasSizeOf(3));
+    }
+
     private List a(ListBuilder builder) {
         return builder.build();
     }
