@@ -4,9 +4,7 @@ public class List {
     private Node start;
 
     public List(String... initValues) {
-        for (String value : initValues) {
-            add(value);
-        }
+        addValuesToList(initValues);
     }
 
     public Node find(String value) {
@@ -33,10 +31,6 @@ public class List {
         }
     }
 
-    private void updateLastNode(Node node) {
-        last().next(node);
-    }
-
     public Node last() {
         Node node = start;
 
@@ -45,10 +39,6 @@ public class List {
         }
 
         return node;
-    }
-
-    private boolean hasStartNode() {
-        return start != null;
     }
 
     public int size() {
@@ -100,5 +90,19 @@ public class List {
 
             node = nextNode;
         }
+    }
+
+    private void addValuesToList(String[] initValues) {
+        for (String value : initValues) {
+            add(value);
+        }
+    }
+
+    private void updateLastNode(Node node) {
+        last().next(node);
+    }
+
+    private boolean hasStartNode() {
+        return start != null;
     }
 }
