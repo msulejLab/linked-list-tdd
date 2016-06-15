@@ -1,7 +1,6 @@
 package com.msulej.linkedlist;
 
 public class Node {
-
     private String value;
     private Node next;
 

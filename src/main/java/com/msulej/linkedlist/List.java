@@ -10,8 +10,8 @@ public class List {
     public Node find(String value) {
         Node node = start;
 
-        while (node != null) {
-            if (node.value().equals(value)) {
+        while (nodeIsNotNull(node)) {
+            if (IsNodeEqualToValue(node, value)) {
                 return node;
             }
 
@@ -45,7 +45,7 @@ public class List {
         Node node = start;
         int size = 0;
 
-        if (node != null) {
+        if (nodeIsNotNull(node)) {
             size = 1;
         } else {
             return size;
@@ -65,7 +65,7 @@ public class List {
         Node node = start;
 
         int index = 0;
-        while (node != null) {
+        while (nodeIsNotNull(node)) {
             values[index] = node.value();
             node = node.next();
             index += 1;
@@ -78,19 +78,19 @@ public class List {
         Node node = start;
         Node nextNode = null;
 
-        if (start != null) {
-            if (start.value().equals(value)) {
+        if (nodeIsNotNull(start)) {
+            if (IsNodeEqualToValue(start, value)) {
                 return deleteFirstNode();
             }
         }
 
-        while (node != null) {
+        while (nodeIsNotNull(node)) {
             if (!node.hasNext()) {
                 return null;
             }
 
             nextNode = node.next();
-            if (nextNode.value().equals(value)) {
+            if (IsNodeEqualToValue(nextNode, value)) {
                 node.next(nextNode.next());
                 return nextNode;
             }
@@ -98,6 +98,35 @@ public class List {
             node = nextNode;
         }
         return node;
+    }
+
+    private boolean IsNodeEqualToValue(Node start, String value) {
+        if (start != null) {
+            return start.value().equals(value);
+        }
+
+        return false;
+    }
+
+
+    public Node get(int index) {
+        Node node = start;
+
+        int currentIndex = 0;
+        while (nodeIsNotNull(node)) {
+            if (currentIndex == index) {
+                return node;
+            }
+
+            node = node.next();
+            currentIndex += 1;
+        }
+
+        return null;
+    }
+
+    private boolean nodeIsNotNull(Node node) {
+        return node != null;
     }
 
     private Node deleteFirstNode() {
@@ -117,22 +146,6 @@ public class List {
     }
 
     private boolean hasStartNode() {
-        return start != null;
-    }
-
-    public Node get(int index) {
-        Node node = start;
-
-        int currentIndex = 0;
-        while (node != null) {
-            if (currentIndex == index) {
-                return node;
-            }
-
-            node = node.next();
-            currentIndex += 1;
-        }
-
-        return null;
+        return nodeIsNotNull(start);
     }
 }
