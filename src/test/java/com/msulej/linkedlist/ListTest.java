@@ -1,5 +1,6 @@
 package com.msulej.linkedlist;
 
+import org.hamcrest.core.IsNot;
 import org.junit.Test;
 
 import static com.msulej.linkedlist.ListBuilder.*;
@@ -8,6 +9,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.collection.IsArrayContainingInOrder.arrayContaining;
+import static org.hamcrest.core.IsNot.not;
 
 
 public class ListTest {
@@ -56,6 +58,18 @@ public class ListTest {
         theList.add("barney");
 
         assertThat(theList.values(), arrayContaining("fred", "wilma", "betty", "barney"));
+    }
+
+    @Test
+    public void shouldDeleteNodeFromList() {
+        List theList = a(list().withValues("fred", "wilma", "betty", "barney"));
+
+        Node theNode = theList.find("wilma");
+        assertThat("List should contain wilma", not(nullValue()));
+
+        theList.delete(theNode.value());
+
+        assertThat(theList.find("wilma"), is(nullValue()));
     }
 
     private List a(ListBuilder builder) {
