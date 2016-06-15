@@ -1,6 +1,6 @@
 package com.msulej.linkedlist;
 
-public class ListBuilder {
+public class ListBuilder implements Builder<List> {
 
     private String[] values;
 

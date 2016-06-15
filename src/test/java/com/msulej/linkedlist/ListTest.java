@@ -1,6 +1,5 @@
 package com.msulej.linkedlist;
 
-import org.hamcrest.core.IsNot;
 import org.junit.Test;
 
 import static com.msulej.linkedlist.ListBuilder.*;
@@ -97,8 +96,7 @@ public class ListTest {
         assertThat(lastNode.value(), equalTo("dino"));
     }
 
-
-    private List a(ListBuilder builder) {
+    private <T> T a(Builder<T> builder) {
         return builder.build();
     }
 }
