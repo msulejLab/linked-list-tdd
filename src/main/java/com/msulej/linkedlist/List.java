@@ -19,8 +19,12 @@ public class List {
         if (!hasStartNode()) {
             start = node;
         } else {
-            last().next(node);
+            updateLastNode(node);
         }
+    }
+
+    private void updateLastNode(Node node) {
+        last().next(node);
     }
 
     public Node last() {

@@ -25,4 +25,8 @@ public class ListSizeMatcher extends TypeSafeMatcher<List> {
     protected void describeMismatchSafely(List item, Description mismatchDescription) {
         mismatchDescription.appendText("list of size ").appendValue(item.size());
     }
+
+    public static ListSizeMatcher hasSizeOf(int expectedSize) {
+        return new ListSizeMatcher(expectedSize);
+    }
 }
