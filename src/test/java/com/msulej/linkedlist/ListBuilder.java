@@ -2,16 +2,15 @@ package com.msulej.linkedlist;
 
 public class ListBuilder {
 
-    public static final int VALUES_BUFFER = 20;
-
-    String[] values = new String[VALUES_BUFFER];
+    private String[] values;
 
     public ListBuilder withoutAnyValues() {
+        values = new String[0];
         return this;
     }
 
     public List build() {
-        return new List();
+        return new List(values);
     }
 
     public static ListBuilder list() {
