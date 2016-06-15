@@ -2,6 +2,7 @@ package com.msulej.linkedlist;
 
 import org.junit.Test;
 
+import static com.msulej.linkedlist.ListBuilder.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -25,9 +26,5 @@ public class ListTest {
 
     private List a(ListBuilder builder) {
         return builder.build();
-    }
-
-    private ListBuilder list() {
-        return new ListBuilder();
     }
 }
