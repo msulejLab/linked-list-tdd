@@ -30,7 +30,7 @@ public class List {
     public Node last() {
         Node node = start;
 
-        while (node.next() != null) {
+        while (node.hasNext()) {
             node = node.next();
         }
 
@@ -51,9 +51,9 @@ public class List {
             return size;
         }
 
-        while (node.next() != null) {
-            node = node.next();
+        while (node != null) {
             size += 1;
+            node = node.next();
         }
 
         return size;

@@ -21,7 +21,7 @@ public class Node {
         return next;
     }
 
-    public boolean hasNext() {
+    boolean hasNext() {
         return next != null;
     }
 }
