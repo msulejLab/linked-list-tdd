@@ -80,9 +80,7 @@ public class List {
 
         if (start != null) {
             if (start.value().equals(value)) {
-                Node oldStart = start;
-                start = oldStart.next();
-                return oldStart;
+                return deleteFirstNode();
             }
         }
 
@@ -100,6 +98,12 @@ public class List {
             node = nextNode;
         }
         return node;
+    }
+
+    private Node deleteFirstNode() {
+        Node oldStart = start;
+        start = oldStart.next();
+        return oldStart;
     }
 
     private void addValuesToList(String[] initValues) {
