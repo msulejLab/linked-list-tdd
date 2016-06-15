@@ -2,7 +2,6 @@ package com.msulej.linkedlist;
 
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -21,6 +20,14 @@ public class ListTest {
 
         Node listNode = theList.find("fred");
 
-        assertThat(node, is(nullValue()));
+        assertThat(listNode, is(nullValue()));
+    }
+
+    private List a(ListBuilder builder) {
+        return builder.build();
+    }
+
+    private ListBuilder list() {
+        return new ListBuilder();
     }
 }
