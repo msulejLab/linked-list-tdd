@@ -33,7 +33,7 @@ public class ListTest {
 
         Node listNode = theList.find("fred");
 
-        assertThat(listNode, equalTo(listNode.value()));
+        assertThat("fred", equalTo(listNode.value()));
     }
 
     private List a(ListBuilder builder) {
